@@ -1,0 +1,37 @@
+# UserList
+  
+User-list 
+
+Production ready application for maintaining User information
+
+Objective: 
+Maintain User Information with uniq Id's in User List
+
+Prerequisites: 
+Node js Latest version (version 12)
+
+Folder structutre:
+1.	main.ts is main start file
+2.	index.html is main start file for DOM
+3.	app.component.ts for Header, Footer and router outlet
+4.	services --> folder have data service to have http methods
+5.	dialogs --> folder for maintaining all modal pop ups for each CRUD operation
+6.	models --> folder for declaring User info structure
+7.	mock --> folder for mainting node js rest API's to GET/POST/PUT/DELETE
+8.	mock --> server.js --> for creating node server with express
+9.	mock --> app --> routes --> contact-list.routes.js for all CRUD methos.
+10.	mock --> app --> routes --> controllers --> contact-list.controller.js for all API logic
+11.	mock --> app --> routes --> controllers --> contact-list.json for mock data
+
+steps to Run:
+
+ To Run this Project perform below steps
+ 
+1.	clone project using git@github.com:Ruchika18/User-List or download Zip and exract
+2.	pull branch develop
+3.	In project folder --> User-List --> run "npm install"
+4.	Install express js globally using command --> "npm install -g express"
+5.	Install uniqueid using npm install uniqid
+6.	Inside project folder run --> ng serve and open browser window with url http://localhost:4200/
+7.	Inside mock folder run command --> node server.js
+8.	perform any CRUD operation.

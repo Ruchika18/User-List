@@ -1,0 +1,11 @@
+<nav mat-tab-nav-bar class="mat-tab-backgrount-color">
+    <a href="https://www.exelatech.com/" target="_balnk"><img src="../assets/exela.png" alt="Girl in a jacket" width="95" height="50"></a>
+    <a mat-tab-link class="mat-table-link"
+      *ngFor="let link of navLinks"
+      [routerLink]="link.path"
+      routerLinkActive #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{exact:true}"
+      [active]="rla.isActive">
+        {{ link.label }}
+    </a>
+  </nav>

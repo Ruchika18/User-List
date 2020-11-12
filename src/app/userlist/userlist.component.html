@@ -1,0 +1,91 @@
+<div>
+    <form [formGroup]="searchForm" class="search__form"  *ngIf="this.searchForm">
+
+    <mat-form-field class="form_field-first" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input type="text"
+             aria-label="First Name"
+             matInput
+             formControlName="firstName"
+             (keyup)="applyFilter()"
+      >
+    </mat-form-field>
+
+
+    <mat-form-field class="form_field-last" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input type="text"
+             aria-label="Last Name"
+             matInput
+             formControlName="lastName"
+             (keyup)="applyFilter()"
+      >
+    </mat-form-field>
+
+    <mat-form-field class="form_field-city" appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input type="text"
+               aria-label="User Name"
+               matInput
+               formControlName="email"
+               (keyup)="applyFilter()"
+        >
+      </mat-form-field>
+    </form>
+    <div class="container mat-elevation-z22">
+    <mat-table #table [dataSource]="this.dataSource" matSort matSortStart="desc" class="mat-cell">
+
+        <ng-container matColumnDef="firstName">
+        <mat-header-cell mat-sort-header class="mat-table-header" *matHeaderCellDef>First Name
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.firstName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+        <mat-header-cell mat-sort-header class="mat-table-header" *matHeaderCellDef>Last Name
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.lastName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+        <mat-header-cell mat-sort-header class="mat-table-header" *matHeaderCellDef>Username</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+        <mat-header-cell mat-sort-header class="mat-table-header" *matHeaderCellDef>City</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.city}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dept">
+            <mat-header-cell mat-sort-header class="mat-table-header" *matHeaderCellDef>Department</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.dept}}</mat-cell>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+        <mat-header-cell class="mat-table-header"  *matHeaderCellDef>
+            <button mat-icon-button color="primary" (click)="addNew()">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+            </button>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i=index;">
+            <button mat-icon-button color="accent" (click)="startEdit(row, i)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="accent" (click)="deleteItem(i, row)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+        </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4, 6, 10, 20]">
+    </mat-paginator>
+    </div>
+</div>
